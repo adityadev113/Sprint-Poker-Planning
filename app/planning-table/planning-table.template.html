@@ -1,0 +1,39 @@
+<div class="panel-heading">
+	Topic/User story set for the discussion <span ng-if="$ctrl.topicInprogress" class="topic-info">{{$ctrl.topicInprogress.topic}}</span></div>
+<div class="panel-body">
+	<div ng-if="$ctrl.topicInprogress" class="row">
+		<div class="col-sm-2 participant-points" ng-repeat="participant in $ctrl.topicInprogress.participants">
+			<p>{{participant.user.name}}</p>
+			<div class="card" ng-class="{'points-received': participant.points}">
+				<span class="points" ng-class="{'show-points': $ctrl.showPoints}">
+					{{participant.points}}
+				</span>
+			</div>
+		</div>
+	</div>
+	<div ng-if="!$ctrl.topicInprogress">
+		<p>This below shown view is the pointing table view. When a scrum master sets the story/topic, then all the participants and the process
+			of pointing will be shown here. The below notation of the cards (sample) tells us whether the participant has pointed or
+			not.
+		</p>
+		<div class="row">
+			<div class="col-sm-6">
+				<p>Jack</p>
+				<div class="notpointed-card">
+				</div>
+				<p><i>"Jack has pointed"</i></p>
+			</div>
+			<div class="col-sm-6">
+				<p>Rose</p>
+				<div class="pointed-card">
+				</div>
+				<p><i>"Rose has not yet pointed"</i></p>
+			</div>
+		</div>
+		<hr>
+
+		<p ng-if="!$ctrl.isHost">Wait for the scrum master to select the topic for discussion</p>
+		<p ng-if="$ctrl.isHost">Once each participant joins the app, select a topic/user story or user story number and use the below form to send it to all participants
+			for pointing.</p>
+	</div>
+</div>
